@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
 
   s.name              = 'gollum'
   s.version           = '6.0.1'
-  s.date              = '2021-04-18'
+  s.date              = '2021-08-20'
   s.license           = 'MIT'
 
   s.summary     = 'A simple, Git-powered wiki.'
@@ -51,6 +51,7 @@ Gem::Specification.new do |s|
   # = MANIFEST =
   s.files = %w[
     CONTRIBUTING.md
+    Dockerfile
     Gemfile
     HISTORY.md
     LICENSE
@@ -65,18 +66,22 @@ Gem::Specification.new do |s|
     contrib/openrc/init.d/gollum
     contrib/systemd/gollum@.service
     contrib/sysv-debian/init.d/gollum
+    doc/created.rid
+    docker-run.sh
     gollum.gemspec
     lib/gollum.rb
     lib/gollum/app.rb
     lib/gollum/assets.rb
     lib/gollum/helpers.rb
-    lib/gollum/public/assets/.sprockets-manifest-de7bb79aec424e55af1acdcc4237b301.json
+    lib/gollum/public/assets/.sprockets-manifest-4f9a7c1631645007e06e679282bea889.json
     lib/gollum/public/assets/app-0fd228e26bfbe6fe31a2da268eb0e98e780c1191c1a918adf383377946e9c838.js
     lib/gollum/public/assets/app-0fd228e26bfbe6fe31a2da268eb0e98e780c1191c1a918adf383377946e9c838.js.gz
-    lib/gollum/public/assets/app-ad43ca64b295d8444b10f22ee868f18429268af498f1bc515434878b690e37a2.css
-    lib/gollum/public/assets/app-ad43ca64b295d8444b10f22ee868f18429268af498f1bc515434878b690e37a2.css.gz
+    lib/gollum/public/assets/app-cb122b4c17500faa5e013cb43334fafcf2dd7d72f694b06d9616f8b33fefb694.css
+    lib/gollum/public/assets/app-cb122b4c17500faa5e013cb43334fafcf2dd7d72f694b06d9616f8b33fefb694.css.gz
     lib/gollum/public/assets/criticmarkup-31ae5d3282bbb8e7b7c3c9917e9fb68e3315a6b4a75da6cec48d21b8846905c4.css
     lib/gollum/public/assets/criticmarkup-31ae5d3282bbb8e7b7c3c9917e9fb68e3315a6b4a75da6cec48d21b8846905c4.css.gz
+    lib/gollum/public/assets/editor-ab9893055f226e7d1b1fd36d027108c75b0f19b59c5e2af9036f8daa6d480c1a.js
+    lib/gollum/public/assets/editor-ab9893055f226e7d1b1fd36d027108c75b0f19b59c5e2af9036f8daa6d480c1a.js.gz
     lib/gollum/public/assets/editor-db10c8351306e92f1926ba225d0cd9c8e886482b3b9820a85825ec3abab5f1cf.js
     lib/gollum/public/assets/editor-db10c8351306e92f1926ba225d0cd9c8e886482b3b9820a85825ec3abab5f1cf.js.gz
     lib/gollum/public/assets/print-512498c368be0d3fb1ba105dfa84289ae48380ec9fcbef948bd4e23b0b095bfb.css
@@ -749,8 +754,411 @@ Gem::Specification.new do |s|
     lib/gollum/public/gollum/javascript/MathJax/jax/output/PlainSource/jax.js
     lib/gollum/public/gollum/javascript/MathJax/jax/output/PreviewHTML/config.js
     lib/gollum/public/gollum/javascript/MathJax/jax/output/PreviewHTML/jax.js
+    lib/gollum/public/gollum/javascript/ace.old/ace.js
+    lib/gollum/public/gollum/javascript/ace.old/ext-beautify.js
+    lib/gollum/public/gollum/javascript/ace.old/ext-elastic_tabstops_lite.js
+    lib/gollum/public/gollum/javascript/ace.old/ext-emmet.js
+    lib/gollum/public/gollum/javascript/ace.old/ext-error_marker.js
+    lib/gollum/public/gollum/javascript/ace.old/ext-keybinding_menu.js
+    lib/gollum/public/gollum/javascript/ace.old/ext-language_tools.js
+    lib/gollum/public/gollum/javascript/ace.old/ext-linking.js
+    lib/gollum/public/gollum/javascript/ace.old/ext-modelist.js
+    lib/gollum/public/gollum/javascript/ace.old/ext-options.js
+    lib/gollum/public/gollum/javascript/ace.old/ext-prompt.js
+    lib/gollum/public/gollum/javascript/ace.old/ext-rtl.js
+    lib/gollum/public/gollum/javascript/ace.old/ext-searchbox.js
+    lib/gollum/public/gollum/javascript/ace.old/ext-settings_menu.js
+    lib/gollum/public/gollum/javascript/ace.old/ext-spellcheck.js
+    lib/gollum/public/gollum/javascript/ace.old/ext-split.js
+    lib/gollum/public/gollum/javascript/ace.old/ext-static_highlight.js
+    lib/gollum/public/gollum/javascript/ace.old/ext-statusbar.js
+    lib/gollum/public/gollum/javascript/ace.old/ext-textarea.js
+    lib/gollum/public/gollum/javascript/ace.old/ext-themelist.js
+    lib/gollum/public/gollum/javascript/ace.old/ext-whitespace.js
+    lib/gollum/public/gollum/javascript/ace.old/keybinding-emacs.js
+    lib/gollum/public/gollum/javascript/ace.old/keybinding-sublime.js
+    lib/gollum/public/gollum/javascript/ace.old/keybinding-vim.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-abap.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-abc.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-actionscript.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-ada.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-apache_conf.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-apex.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-applescript.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-aql.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-asciidoc.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-asl.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-assembly_x86.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-autohotkey.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-batchfile.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-bro.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-c9search.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-c_cpp.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-cirru.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-clojure.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-cobol.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-coffee.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-coldfusion.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-crystal.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-csharp.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-csound_document.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-csound_orchestra.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-csound_score.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-csp.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-css.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-curly.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-d.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-dart.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-diff.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-django.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-dockerfile.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-dot.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-drools.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-edifact.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-eiffel.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-ejs.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-elixir.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-elm.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-erlang.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-forth.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-fortran.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-fsharp.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-fsl.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-ftl.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-gcode.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-gherkin.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-gitignore.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-glsl.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-gobstones.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-golang.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-graphqlschema.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-groovy.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-haml.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-handlebars.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-haskell.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-haskell_cabal.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-haxe.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-hjson.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-html.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-html_elixir.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-html_ruby.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-ini.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-io.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-jack.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-jade.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-java.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-javascript.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-json.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-jsoniq.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-jsp.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-jssm.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-jsx.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-julia.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-kotlin.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-latex.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-less.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-liquid.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-lisp.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-livescript.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-logiql.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-logtalk.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-lsl.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-lua.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-luapage.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-lucene.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-makefile.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-markdown.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-mask.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-matlab.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-maze.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-mel.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-mixal.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-mushcode.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-mysql.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-nginx.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-nim.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-nix.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-nsis.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-objectivec.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-ocaml.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-pascal.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-perl.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-perl6.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-pgsql.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-php.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-php_laravel_blade.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-pig.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-plain_text.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-powershell.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-praat.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-prolog.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-properties.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-protobuf.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-puppet.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-python.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-r.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-razor.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-rdoc.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-red.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-redshift.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-rhtml.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-rst.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-ruby.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-rust.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-sass.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-scad.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-scala.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-scheme.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-scss.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-sh.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-sjs.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-slim.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-smarty.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-snippets.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-soy_template.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-space.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-sparql.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-sql.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-sqlserver.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-stylus.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-svg.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-swift.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-tcl.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-terraform.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-tex.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-text.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-textile.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-toml.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-tsx.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-turtle.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-twig.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-typescript.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-vala.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-vbscript.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-velocity.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-verilog.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-vhdl.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-visualforce.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-wollok.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-xml.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-xquery.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-yaml.js
+    lib/gollum/public/gollum/javascript/ace.old/mode-zeek.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/abap.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/abc.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/actionscript.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/ada.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/apache_conf.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/apex.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/applescript.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/aql.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/asciidoc.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/asl.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/assembly_x86.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/autohotkey.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/batchfile.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/bro.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/c9search.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/c_cpp.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/cirru.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/clojure.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/cobol.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/coffee.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/coldfusion.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/crystal.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/csharp.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/csound_document.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/csound_orchestra.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/csound_score.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/csp.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/css.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/curly.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/d.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/dart.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/diff.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/django.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/dockerfile.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/dot.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/drools.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/edifact.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/eiffel.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/ejs.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/elixir.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/elm.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/erlang.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/forth.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/fortran.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/fsharp.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/fsl.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/ftl.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/gcode.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/gherkin.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/gitignore.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/glsl.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/gobstones.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/golang.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/graphqlschema.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/groovy.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/haml.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/handlebars.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/haskell.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/haskell_cabal.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/haxe.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/hjson.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/html.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/html_elixir.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/html_ruby.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/ini.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/io.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/jack.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/jade.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/java.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/javascript.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/json.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/jsoniq.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/jsp.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/jssm.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/jsx.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/julia.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/kotlin.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/latex.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/less.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/liquid.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/lisp.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/livescript.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/logiql.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/logtalk.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/lsl.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/lua.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/luapage.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/lucene.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/makefile.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/markdown.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/mask.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/matlab.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/maze.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/mel.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/mixal.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/mushcode.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/mysql.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/nginx.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/nim.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/nix.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/nsis.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/objectivec.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/ocaml.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/pascal.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/perl.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/perl6.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/pgsql.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/php.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/php_laravel_blade.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/pig.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/plain_text.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/powershell.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/praat.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/prolog.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/properties.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/protobuf.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/puppet.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/python.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/r.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/razor.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/rdoc.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/red.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/redshift.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/rhtml.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/rst.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/ruby.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/rust.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/sass.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/scad.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/scala.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/scheme.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/scss.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/sh.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/sjs.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/slim.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/smarty.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/snippets.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/soy_template.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/space.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/sparql.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/sql.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/sqlserver.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/stylus.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/svg.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/swift.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/tcl.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/terraform.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/tex.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/text.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/textile.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/toml.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/tsx.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/turtle.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/twig.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/typescript.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/vala.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/vbscript.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/velocity.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/verilog.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/vhdl.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/visualforce.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/wollok.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/xml.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/xquery.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/yaml.js
+    lib/gollum/public/gollum/javascript/ace.old/snippets/zeek.js
+    lib/gollum/public/gollum/javascript/ace.old/theme-ambiance.js
+    lib/gollum/public/gollum/javascript/ace.old/theme-chaos.js
+    lib/gollum/public/gollum/javascript/ace.old/theme-chrome.js
+    lib/gollum/public/gollum/javascript/ace.old/theme-clouds.js
+    lib/gollum/public/gollum/javascript/ace.old/theme-clouds_midnight.js
+    lib/gollum/public/gollum/javascript/ace.old/theme-cobalt.js
+    lib/gollum/public/gollum/javascript/ace.old/theme-crimson_editor.js
+    lib/gollum/public/gollum/javascript/ace.old/theme-dawn.js
+    lib/gollum/public/gollum/javascript/ace.old/theme-dracula.js
+    lib/gollum/public/gollum/javascript/ace.old/theme-dreamweaver.js
+    lib/gollum/public/gollum/javascript/ace.old/theme-eclipse.js
+    lib/gollum/public/gollum/javascript/ace.old/theme-github.js
+    lib/gollum/public/gollum/javascript/ace.old/theme-gob.js
+    lib/gollum/public/gollum/javascript/ace.old/theme-gruvbox.js
+    lib/gollum/public/gollum/javascript/ace.old/theme-idle_fingers.js
+    lib/gollum/public/gollum/javascript/ace.old/theme-iplastic.js
+    lib/gollum/public/gollum/javascript/ace.old/theme-katzenmilch.js
+    lib/gollum/public/gollum/javascript/ace.old/theme-kr_theme.js
+    lib/gollum/public/gollum/javascript/ace.old/theme-kuroir.js
+    lib/gollum/public/gollum/javascript/ace.old/theme-merbivore.js
+    lib/gollum/public/gollum/javascript/ace.old/theme-merbivore_soft.js
+    lib/gollum/public/gollum/javascript/ace.old/theme-mono_industrial.js
+    lib/gollum/public/gollum/javascript/ace.old/theme-monokai.js
+    lib/gollum/public/gollum/javascript/ace.old/theme-pastel_on_dark.js
+    lib/gollum/public/gollum/javascript/ace.old/theme-solarized_dark.js
+    lib/gollum/public/gollum/javascript/ace.old/theme-solarized_light.js
+    lib/gollum/public/gollum/javascript/ace.old/theme-sqlserver.js
+    lib/gollum/public/gollum/javascript/ace.old/theme-terminal.js
+    lib/gollum/public/gollum/javascript/ace.old/theme-textmate.js
+    lib/gollum/public/gollum/javascript/ace.old/theme-tomorrow.js
+    lib/gollum/public/gollum/javascript/ace.old/theme-tomorrow_night.js
+    lib/gollum/public/gollum/javascript/ace.old/theme-tomorrow_night_blue.js
+    lib/gollum/public/gollum/javascript/ace.old/theme-tomorrow_night_bright.js
+    lib/gollum/public/gollum/javascript/ace.old/theme-tomorrow_night_eighties.js
+    lib/gollum/public/gollum/javascript/ace.old/theme-twilight.js
+    lib/gollum/public/gollum/javascript/ace.old/theme-vibrant_ink.js
+    lib/gollum/public/gollum/javascript/ace.old/theme-xcode.js
+    lib/gollum/public/gollum/javascript/ace.old/worker-coffee.js
+    lib/gollum/public/gollum/javascript/ace.old/worker-css.js
+    lib/gollum/public/gollum/javascript/ace.old/worker-html.js
+    lib/gollum/public/gollum/javascript/ace.old/worker-javascript.js
+    lib/gollum/public/gollum/javascript/ace.old/worker-json.js
+    lib/gollum/public/gollum/javascript/ace.old/worker-lua.js
+    lib/gollum/public/gollum/javascript/ace.old/worker-php.js
+    lib/gollum/public/gollum/javascript/ace.old/worker-xml.js
+    lib/gollum/public/gollum/javascript/ace.old/worker-xquery.js
     lib/gollum/public/gollum/javascript/ace/ace.js
     lib/gollum/public/gollum/javascript/ace/ext-beautify.js
+    lib/gollum/public/gollum/javascript/ace/ext-code_lens.js
     lib/gollum/public/gollum/javascript/ace/ext-elastic_tabstops_lite.js
     lib/gollum/public/gollum/javascript/ace/ext-emmet.js
     lib/gollum/public/gollum/javascript/ace/ext-error_marker.js
@@ -773,10 +1181,12 @@ Gem::Specification.new do |s|
     lib/gollum/public/gollum/javascript/ace/keybinding-emacs.js
     lib/gollum/public/gollum/javascript/ace/keybinding-sublime.js
     lib/gollum/public/gollum/javascript/ace/keybinding-vim.js
+    lib/gollum/public/gollum/javascript/ace/keybinding-vscode.js
     lib/gollum/public/gollum/javascript/ace/mode-abap.js
     lib/gollum/public/gollum/javascript/ace/mode-abc.js
     lib/gollum/public/gollum/javascript/ace/mode-actionscript.js
     lib/gollum/public/gollum/javascript/ace/mode-ada.js
+    lib/gollum/public/gollum/javascript/ace/mode-alda.js
     lib/gollum/public/gollum/javascript/ace/mode-apache_conf.js
     lib/gollum/public/gollum/javascript/ace/mode-apex.js
     lib/gollum/public/gollum/javascript/ace/mode-applescript.js
@@ -844,6 +1254,7 @@ Gem::Specification.new do |s|
     lib/gollum/public/gollum/javascript/ace/mode-java.js
     lib/gollum/public/gollum/javascript/ace/mode-javascript.js
     lib/gollum/public/gollum/javascript/ace/mode-json.js
+    lib/gollum/public/gollum/javascript/ace/mode-json5.js
     lib/gollum/public/gollum/javascript/ace/mode-jsoniq.js
     lib/gollum/public/gollum/javascript/ace/mode-jsp.js
     lib/gollum/public/gollum/javascript/ace/mode-jssm.js
@@ -866,6 +1277,7 @@ Gem::Specification.new do |s|
     lib/gollum/public/gollum/javascript/ace/mode-mask.js
     lib/gollum/public/gollum/javascript/ace/mode-matlab.js
     lib/gollum/public/gollum/javascript/ace/mode-maze.js
+    lib/gollum/public/gollum/javascript/ace/mode-mediawiki.js
     lib/gollum/public/gollum/javascript/ace/mode-mel.js
     lib/gollum/public/gollum/javascript/ace/mode-mixal.js
     lib/gollum/public/gollum/javascript/ace/mode-mushcode.js
@@ -874,6 +1286,7 @@ Gem::Specification.new do |s|
     lib/gollum/public/gollum/javascript/ace/mode-nim.js
     lib/gollum/public/gollum/javascript/ace/mode-nix.js
     lib/gollum/public/gollum/javascript/ace/mode-nsis.js
+    lib/gollum/public/gollum/javascript/ace/mode-nunjucks.js
     lib/gollum/public/gollum/javascript/ace/mode-objectivec.js
     lib/gollum/public/gollum/javascript/ace/mode-ocaml.js
     lib/gollum/public/gollum/javascript/ace/mode-pascal.js
@@ -886,11 +1299,13 @@ Gem::Specification.new do |s|
     lib/gollum/public/gollum/javascript/ace/mode-plain_text.js
     lib/gollum/public/gollum/javascript/ace/mode-powershell.js
     lib/gollum/public/gollum/javascript/ace/mode-praat.js
+    lib/gollum/public/gollum/javascript/ace/mode-prisma.js
     lib/gollum/public/gollum/javascript/ace/mode-prolog.js
     lib/gollum/public/gollum/javascript/ace/mode-properties.js
     lib/gollum/public/gollum/javascript/ace/mode-protobuf.js
     lib/gollum/public/gollum/javascript/ace/mode-puppet.js
     lib/gollum/public/gollum/javascript/ace/mode-python.js
+    lib/gollum/public/gollum/javascript/ace/mode-qml.js
     lib/gollum/public/gollum/javascript/ace/mode-r.js
     lib/gollum/public/gollum/javascript/ace/mode-razor.js
     lib/gollum/public/gollum/javascript/ace/mode-rdoc.js
@@ -943,6 +1358,7 @@ Gem::Specification.new do |s|
     lib/gollum/public/gollum/javascript/ace/snippets/abc.js
     lib/gollum/public/gollum/javascript/ace/snippets/actionscript.js
     lib/gollum/public/gollum/javascript/ace/snippets/ada.js
+    lib/gollum/public/gollum/javascript/ace/snippets/alda.js
     lib/gollum/public/gollum/javascript/ace/snippets/apache_conf.js
     lib/gollum/public/gollum/javascript/ace/snippets/apex.js
     lib/gollum/public/gollum/javascript/ace/snippets/applescript.js
@@ -1010,6 +1426,7 @@ Gem::Specification.new do |s|
     lib/gollum/public/gollum/javascript/ace/snippets/java.js
     lib/gollum/public/gollum/javascript/ace/snippets/javascript.js
     lib/gollum/public/gollum/javascript/ace/snippets/json.js
+    lib/gollum/public/gollum/javascript/ace/snippets/json5.js
     lib/gollum/public/gollum/javascript/ace/snippets/jsoniq.js
     lib/gollum/public/gollum/javascript/ace/snippets/jsp.js
     lib/gollum/public/gollum/javascript/ace/snippets/jssm.js
@@ -1032,6 +1449,7 @@ Gem::Specification.new do |s|
     lib/gollum/public/gollum/javascript/ace/snippets/mask.js
     lib/gollum/public/gollum/javascript/ace/snippets/matlab.js
     lib/gollum/public/gollum/javascript/ace/snippets/maze.js
+    lib/gollum/public/gollum/javascript/ace/snippets/mediawiki.js
     lib/gollum/public/gollum/javascript/ace/snippets/mel.js
     lib/gollum/public/gollum/javascript/ace/snippets/mixal.js
     lib/gollum/public/gollum/javascript/ace/snippets/mushcode.js
@@ -1040,6 +1458,7 @@ Gem::Specification.new do |s|
     lib/gollum/public/gollum/javascript/ace/snippets/nim.js
     lib/gollum/public/gollum/javascript/ace/snippets/nix.js
     lib/gollum/public/gollum/javascript/ace/snippets/nsis.js
+    lib/gollum/public/gollum/javascript/ace/snippets/nunjucks.js
     lib/gollum/public/gollum/javascript/ace/snippets/objectivec.js
     lib/gollum/public/gollum/javascript/ace/snippets/ocaml.js
     lib/gollum/public/gollum/javascript/ace/snippets/pascal.js
@@ -1052,11 +1471,13 @@ Gem::Specification.new do |s|
     lib/gollum/public/gollum/javascript/ace/snippets/plain_text.js
     lib/gollum/public/gollum/javascript/ace/snippets/powershell.js
     lib/gollum/public/gollum/javascript/ace/snippets/praat.js
+    lib/gollum/public/gollum/javascript/ace/snippets/prisma.js
     lib/gollum/public/gollum/javascript/ace/snippets/prolog.js
     lib/gollum/public/gollum/javascript/ace/snippets/properties.js
     lib/gollum/public/gollum/javascript/ace/snippets/protobuf.js
     lib/gollum/public/gollum/javascript/ace/snippets/puppet.js
     lib/gollum/public/gollum/javascript/ace/snippets/python.js
+    lib/gollum/public/gollum/javascript/ace/snippets/qml.js
     lib/gollum/public/gollum/javascript/ace/snippets/r.js
     lib/gollum/public/gollum/javascript/ace/snippets/razor.js
     lib/gollum/public/gollum/javascript/ace/snippets/rdoc.js
@@ -1128,6 +1549,7 @@ Gem::Specification.new do |s|
     lib/gollum/public/gollum/javascript/ace/theme-merbivore_soft.js
     lib/gollum/public/gollum/javascript/ace/theme-mono_industrial.js
     lib/gollum/public/gollum/javascript/ace/theme-monokai.js
+    lib/gollum/public/gollum/javascript/ace/theme-nord_dark.js
     lib/gollum/public/gollum/javascript/ace/theme-pastel_on_dark.js
     lib/gollum/public/gollum/javascript/ace/theme-solarized_dark.js
     lib/gollum/public/gollum/javascript/ace/theme-solarized_light.js
@@ -1142,6 +1564,7 @@ Gem::Specification.new do |s|
     lib/gollum/public/gollum/javascript/ace/theme-twilight.js
     lib/gollum/public/gollum/javascript/ace/theme-vibrant_ink.js
     lib/gollum/public/gollum/javascript/ace/theme-xcode.js
+    lib/gollum/public/gollum/javascript/ace/worker-base.js
     lib/gollum/public/gollum/javascript/ace/worker-coffee.js
     lib/gollum/public/gollum/javascript/ace/worker-css.js
     lib/gollum/public/gollum/javascript/ace/worker-html.js
@@ -1222,6 +1645,7 @@ Gem::Specification.new do |s|
     lib/gollum/views/has_page.rb
     lib/gollum/views/has_user_icons.rb
     lib/gollum/views/helpers.rb
+    lib/gollum/views/helpers/locale_helpers.rb
     lib/gollum/views/history.rb
     lib/gollum/views/latest_changes.rb
     lib/gollum/views/layout.rb
