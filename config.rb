@@ -8,4 +8,13 @@ It is especially useful for customizing supported formats/markups. For more info
 
 =end
 
+wiki_options = {
+  live_preview: true,
+  css: true,
+  js: true,
+  critic_markup: true
+}
+
+Precious::App.set(:wiki_options, wiki_options)
+Precious::App.set(:port, 14567)
 # enter your Ruby code here ...
