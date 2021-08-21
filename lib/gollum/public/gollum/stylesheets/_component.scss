@@ -90,6 +90,14 @@
   }
 }
 
+@mixin user {
+    text-align: right;
+    padding-right:0.5em;
+    font-size: .8em;
+    line-height: 2.0em;
+    color: #999;
+}
+
 // Defines a common editor button style using image sprites.
 @mixin editor-button($row-pos: 0) {
   $left: $editor-button-img-width * -1 * $row-pos;
