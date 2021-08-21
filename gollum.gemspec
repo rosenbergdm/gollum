@@ -5,7 +5,7 @@ Gem::Specification.new do |s|
   s.required_ruby_version = '>= 1.9'
 
   s.name              = 'gollum'
-  s.version           = '6.0.2'
+  s.version           = '6.0.5'
   s.date              = '2021-08-20'
   s.license           = 'MIT'
 
@@ -74,18 +74,6 @@ Gem::Specification.new do |s|
     lib/gollum/assets.rb
     lib/gollum/helpers.rb
     lib/gollum/public/assets/.sprockets-manifest-4f9a7c1631645007e06e679282bea889.json
-    lib/gollum/public/assets/app-0fd228e26bfbe6fe31a2da268eb0e98e780c1191c1a918adf383377946e9c838.js
-    lib/gollum/public/assets/app-0fd228e26bfbe6fe31a2da268eb0e98e780c1191c1a918adf383377946e9c838.js.gz
-    lib/gollum/public/assets/app-cb122b4c17500faa5e013cb43334fafcf2dd7d72f694b06d9616f8b33fefb694.css
-    lib/gollum/public/assets/app-cb122b4c17500faa5e013cb43334fafcf2dd7d72f694b06d9616f8b33fefb694.css.gz
-    lib/gollum/public/assets/criticmarkup-31ae5d3282bbb8e7b7c3c9917e9fb68e3315a6b4a75da6cec48d21b8846905c4.css
-    lib/gollum/public/assets/criticmarkup-31ae5d3282bbb8e7b7c3c9917e9fb68e3315a6b4a75da6cec48d21b8846905c4.css.gz
-    lib/gollum/public/assets/editor-ab9893055f226e7d1b1fd36d027108c75b0f19b59c5e2af9036f8daa6d480c1a.js
-    lib/gollum/public/assets/editor-ab9893055f226e7d1b1fd36d027108c75b0f19b59c5e2af9036f8daa6d480c1a.js.gz
-    lib/gollum/public/assets/editor-db10c8351306e92f1926ba225d0cd9c8e886482b3b9820a85825ec3abab5f1cf.js
-    lib/gollum/public/assets/editor-db10c8351306e92f1926ba225d0cd9c8e886482b3b9820a85825ec3abab5f1cf.js.gz
-    lib/gollum/public/assets/print-512498c368be0d3fb1ba105dfa84289ae48380ec9fcbef948bd4e23b0b095bfb.css
-    lib/gollum/public/assets/print-512498c368be0d3fb1ba105dfa84289ae48380ec9fcbef948bd4e23b0b095bfb.css.gz
     lib/gollum/public/gollum/javascript/HOWTO_UPDATE_ACE.md
     lib/gollum/public/gollum/javascript/HOWTO_UPDATE_MATHJAX.md
     lib/gollum/public/gollum/javascript/MathJax/LICENSE
